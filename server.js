@@ -14,7 +14,10 @@ const PORT = process.env.PORT;
 app.use(express.static('static'));
 
 const pool = new pg.Pool({
-    // database: 'CaughtPokemon'
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 app.get("/Pokemon", (req, res, next) => {
