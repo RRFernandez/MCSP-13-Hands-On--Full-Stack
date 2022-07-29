@@ -9,12 +9,12 @@ const app = express();
 
 app.use(express.json());
 
-const PORT = 4000;
+const PORT = process.env.PORT;
 
 app.use(express.static('static'));
 
 const pool = new pg.Pool({
-    database: 'CaughtPokemon'
+    // database: 'CaughtPokemon'
 });
 
 app.get("/Pokemon", (req, res, next) => {
