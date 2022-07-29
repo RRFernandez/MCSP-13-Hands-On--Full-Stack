@@ -31,14 +31,14 @@ app.get("/Pokemon/pokemon", (req, res, next) => {
 app.get("/Pokemon/:id", (req, res, next) => {
     const id = req.params.id;
     console.log(id);
-    pool.query('SELECT * FROM trainers WHERE id = $1', [id]).then((data) => {
-            if (CaughtPokemon) {
-                res.status(201).send(data.rows[0]);
+    pool.query('SELECT * FROM trainers WHERE trainers_id = $1', [id]).then((data) => {
+            if (data.rows[0]) {
+                res.send(data.rows[0]);
             } else {
-                res.sendStatus(400);
+                res.sendStatus(404);
             }
         })
-        .catch(next)
+        // .catch(next)
 });
 
 app.listen(PORT, () => {
