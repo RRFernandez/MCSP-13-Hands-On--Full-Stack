@@ -1,6 +1,9 @@
 import express from "express";
 import fs from "fs/promises";
 import pg from "pg";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
